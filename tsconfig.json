@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "module": "commonjs",
+    "jsx": "react",
+    "jsxFactory": "React.createElement",
+    "esModuleInterop": true,
+    "outDir": "dist"
+  },
+  "exclude": [
+    "src/index.js"
+  ]
+}
