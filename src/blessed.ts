@@ -1,4 +1,4 @@
-import blessed from 'blessed'
+import blessed, { colors } from 'blessed'
 
 const screen = blessed.screen({
   autoPadding: true,
@@ -9,11 +9,11 @@ const screen = blessed.screen({
 screen.key(['escape', 'q'], () => process.exit(0))
 
 const title = blessed.text({
-  content: 'Title',
+  content: 'What\'s your name app',
   top: '50%',
-  left: '0%+1',
+  left: '0%',
   style: {
-    bg: '#454545'
+    bg: colors.match('#454545')
   }
 })
 
@@ -21,7 +21,7 @@ const helpText = blessed.text({
   content: '{bold}h{/bold}:Help',
   tags: true,
   top: '50%',
-  left: '100%-7',
+  right: '0',
   style: {
     bg: '#454545'
   }
@@ -33,6 +33,10 @@ const box = blessed.box({
   width: '100%',
   height: '10%',
   valign: 'middle',
+  padding: {
+    left: 1,
+    right: 1
+  },
   style: {
     fg: 'white',
     bg: '#454567'
@@ -41,14 +45,18 @@ const box = blessed.box({
 })
 
 const hintMenu = blessed.box({
-  content: '{bold}q{/bold}:Quit  {bold}f{/bold}:Focus input  {bold}Esc{/bold}:Unfocus input',
+  content: `
+    {bold}q{/bold}:Quit
+    {bold}f{/bold}:Focus input
+    {bold}Esc{/bold}:Unfocus input
+  `.trim().replace(/\n/g, ''),
   tags: true,
   label: 'Help Menu',
   left: 'center',
   bottom: '0',
   width: '100%',
   height: '10%',
-  hidden: true,
+  hidden: false,
   border: {
     type: 'line'
   },
@@ -70,8 +78,9 @@ const middleText = blessed.box({
 
 const input = blessed.textbox({
   inputOnFocus: true,
+  mouse: true,
   label: 'Name',
-  top: '50%',
+  top: '35%',
   left: 'center',
   width: '40%',
   height: '10%',

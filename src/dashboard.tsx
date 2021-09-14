@@ -29,9 +29,8 @@ function App() {
       onKeypress={() => setCount(count + 1)}
       keyable
     >
-      {`Today is ${dateTime}
-        Count: ${count}`}
-      <textbox></textbox>
+      <text>Today is ${dateTime}</text>
+      <text valign="middle">Count: ${count}</text>
     </box>
   )
 }
