@@ -1,7 +1,11 @@
+import { hijackEffects } from 'stop-runaway-react-effects'
+
 import React from 'react'
 import blessed from 'blessed'
 import { render } from 'react-blessed'
 import { Today } from './components/today'
+
+hijackEffects()
 
 const screen = blessed.screen({
   autoPadding: true,

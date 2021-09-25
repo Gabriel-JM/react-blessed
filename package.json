@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build": "tsc",
+    "build": "rm -rf dist && tsc",
     "start": "npm run build && node dist/react/app",
     "start:b": "npm run build && node dist/base/blessed"
   },
@@ -17,6 +17,8 @@
     "figlet": "^1.5.2",
     "react": "^17.0.2",
     "react-blessed": "^0.7.2",
+    "stop-runaway-react-effects": "^2.0.0",
+    "use-deep-compare-effect": "^1.8.0",
     "weather-js": "^2.0.0"
   }
 }
