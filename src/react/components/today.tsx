@@ -103,9 +103,9 @@ export function Today({ updateInterval, search = 'Anapolis, BR', degreeType = 'F
       border={{ type: 'line' }}
       style={{ border: { fg: 'blue' } }}
     >
-      <text top="0">{chalk.blue(date)}</text>
-      <text top="15%">{gradient.rainbow.multiline(time)}</text>
-      <text top="75%">
+      <text right={1}>{chalk.blue(date)}</text>
+      <text top="center" left="center">{gradient.rainbow.multiline(time)}</text>
+      <text bottom={0} left={1}>
         {
           weather.status === 'loading'
             ? 'Loading...'
