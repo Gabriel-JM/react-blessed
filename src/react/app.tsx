@@ -14,7 +14,7 @@ const screen = blessed.screen({
 })
 
 function App() {
-  return <Today updateInterval={1000} />
+  return <Today updateInterval={5000} />
 }
 
 screen.key(['escape', 'q', 'C-c'], () => process.exit(0))

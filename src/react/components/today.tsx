@@ -4,6 +4,8 @@ import figlet, { Fonts } from 'figlet'
 import weather from 'weather-js'
 import { promisify } from 'util'
 import useDeepCompareEffect from 'use-deep-compare-effect'
+import chalk from 'chalk'
+import gradient from 'gradient-string'
 
 const findWeather = promisify(weather.find)
 
@@ -56,10 +58,10 @@ function useRequest(
 function formatWeather([ results ]) {
   const { location, current, forecast } = results
   const degreeType = location.degreetype
-  const temperature = `${current.temperature}°${degreeType}`
-  const conditions = current.skytext
-  const low = `${forecast[1].low}°${degreeType}`
-  const high = `${forecast[1].high}°${degreeType}`
+  const temperature = chalk.yellow(`${current.temperature}°${degreeType}`)
+  const conditions = chalk.green(current.skytext)
+  const low = chalk.blue(`${forecast[1].low}°${degreeType}`)
+  const high = chalk.red(`${forecast[1].high}°${degreeType}`)
 
   return `${temperature} and ${conditions} (${low} -> ${high})`
 }
@@ -101,8 +103,8 @@ export function Today({ updateInterval, search = 'Anapolis, BR', degreeType = 'F
       border={{ type: 'line' }}
       style={{ border: { fg: 'blue' } }}
     >
-      <text top="0">{date}</text>
-      <text top="15%">{time}</text>
+      <text top="0">{chalk.blue(date)}</text>
+      <text top="15%">{gradient.rainbow.multiline(time)}</text>
       <text top="75%">
         {
           weather.status === 'loading'
